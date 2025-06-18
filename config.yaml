@@ -1,0 +1,13 @@
+name: QuoteSpark
+description: ''
+nodes:
+- key: quote_fetcher
+  name: QuoteFetcher
+  file_name: quote_fetcher.py
+  starting_node: true
+  schedule: null
+- key: daily_inspiration_email_sender
+  name: DailyInspirationEmailSender
+  file_name: daily_inspiration_email_sender.py
+  run_after:
+  - quote_fetcher
