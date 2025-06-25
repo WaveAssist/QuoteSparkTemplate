@@ -5,7 +5,9 @@ nodes:
   name: QuoteFetcher
   file_name: quote_fetcher.py
   starting_node: true
-  schedule: null
+  schedule:
+    cron: '30 08 * * *'  # Every day at 9:30 AM UTC
+    timezone: 'UTC'
 - key: daily_inspiration_email_sender
   name: DailyInspirationEmailSender
   file_name: daily_inspiration_email_sender.py
