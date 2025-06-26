@@ -1,5 +1,5 @@
 import waveassist
-waveassist.init("2fec42dd-492b-4294-8154-d33c3ccf", "darshika_test")
+waveassist.init()
 
 # Fetch the quote data from the previous node
 quote_data_list = waveassist.fetch_data("quote_data") or []
@@ -14,12 +14,21 @@ else:
     author = "Oscar Wilde"
 
 # Create email content
-subject = "Daily Inspiration Quote"
-email_content = f'"{quote_text}"\n\n- {author}'
+subject = "🌟 Your Daily Inspiration"
 
-# Send the email
-waveassist.send_email(subject, html_content=email_content)
-print(email_content)
+email_content = f"""
+<div style="font-family: Georgia, serif; padding: 16px; color: #333;">
+  <blockquote style="font-size: 20px; font-style: italic; margin: 0 0 12px 0; border-left: 4px solid #ccc; padding-left: 12px;">
+    “{quote_text}”
+  </blockquote>
+  <p style="text-align: right; font-size: 16px; margin: 0;">– {author}</p>
+</div>
+"""
+
+waveassist.send_email(
+    subject=subject,
+    html_content=email_content.strip()
+)
 
 # Store confirmation
 waveassist.store_data("email_sent", True)
